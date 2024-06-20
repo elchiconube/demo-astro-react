@@ -1,0 +1,38 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Container from '@components/container.astro';
+import Sectionhead from '@components/sectionhead.astro';
+import Cta from '@components/cta.astro';
+
+import { getCollection } from 'astro:content';
+
+const servicios = await getCollection('servicios');
+---
+
+<Layout title='Nuestros servicios'>
+  <Container>
+    <Sectionhead>
+      <Fragment slot='title'>Nuestros servicios</Fragment>
+      <Fragment slot='description'
+        >Ofrecemos multitud de servicios con los que poder resolver cualquier
+        necesidad</Fragment
+      >
+    </Sectionhead>
+
+    <div class='grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12'>
+      {
+        servicios.map(({ data: servicio }) => (
+          <div class='flex flex-col items-center p-6'>
+            <span class='text-4xl'>{servicio.icon}</span>
+            <h3 class='mt-4 text-xl font-bold text-gray-800'>
+              {servicio.title}
+            </h3>
+            <p class='mt-2 text-center text-gray-600'>{servicio.description}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <Cta />
+  </Container>
+</Layout>

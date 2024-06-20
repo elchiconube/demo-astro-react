@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+
+const servicios = await getCollection('servicios');
+---
+
+<div class='mt-16 md:mt-0'>
+  <h2 class='text-4xl lg:text-5xl font-bold lg:tracking-tight'>
+    Todos los servicios que necesitas
+  </h2>
+  <p class='text-lg mt-4 text-slate-600'>
+    Ofrecemos una amplia gama de servicios de marketing digital para ayudarte a
+    alcanzar tus objetivos y hacer crecer tu negocio.
+  </p>
+</div>
+
+<div class='grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16'>
+  {
+    servicios.map(({ data: item }) => (
+      <div class='flex gap-4 items-start'>
+        <span class='text-3xl'>{item.icon}</span>
+        <div>
+          <h3 class='font-semibold text-lg'>{item.name}</h3>{' '}
+          <p class='text-slate-500 mt-2 leading-relaxed'>{item.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>
