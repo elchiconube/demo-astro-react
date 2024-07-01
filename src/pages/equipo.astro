@@ -4,38 +4,9 @@ import Layout from '@layouts/Layout.astro';
 import Container from '@components/container.astro';
 import Sectionhead from '@components/sectionhead.astro';
 
-const equipo = [
-  {
-    data: {
-      name: 'Juan Pérez',
-      title: 'Diseñador',
-      avatar: {
-        src: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?&fit=crop&w=280',
-        alt: 'Juan Pérez',
-      },
-    },
-  },
-  {
-    data: {
-      name: 'María López',
-      title: 'Desarrolladora',
-      avatar: {
-        src: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?&fit=crop&w=280',
-        alt: 'María López',
-      },
-    },
-  },
-  {
-    data: {
-      name: 'Carlos García',
-      title: 'Responsable de proyectos',
-      avatar: {
-        src: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?&fit=crop&w=280',
-        alt: 'Carlos García',
-      },
-    },
-  },
-];
+import { getRandomUser } from '../api';
+
+const users = await getRandomUser();
 ---
 
 <Layout title='Nuestro equipo'>
@@ -54,25 +25,28 @@ const equipo = [
         arena para hacer de cada proyecto algo único y especial.
       </p>
     </div>
-    <div class='grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12'>
+    <div class='grid md:grid-cols-5 gap-10 mx-auto max-w-4xl mt-12'>
       {
-        equipo.map((teamMemberEntry) => (
+        users?.map((teamMemberEntry) => (
           <div class='group'>
             <div class='w-full aspect-square'>
               <Picture
-                src={teamMemberEntry.data.avatar.src}
-                alt={teamMemberEntry.data.avatar.alt}
-                sizes='(max-width: 800px) 100vw, 400px'
-                width={400}
-                height={400}
+                src={teamMemberEntry.picture.large}
+                alt={teamMemberEntry.name.first}
+                sizes='(max-width: 800px) 100vw, 270px'
+                width={270}
+                height={270}
                 class='w-full rounded-md rounded transition group-hover:-translate-y-1 group-hover:shadow-xl bg-white object-cover object-center aspect-square'
               />
             </div>
 
             <div class='mt-4 text-center'>
-              <h2 class='text-lg text-gray-800'>{teamMemberEntry.data.name}</h2>
+              <h2 class='text-lg text-gray-800'>
+                {teamMemberEntry.name.first}
+              </h2>
               <h3 class='text-sm text-slate-500'>
-                {teamMemberEntry.data.title}
+                {teamMemberEntry.name.first}
+                {teamMemberEntry.name.last}
               </h3>
             </div>
           </div>

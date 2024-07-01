@@ -7,7 +7,7 @@ export default function Slider({ urls }) {
     <div className="mb-24">
       <Carousel showThumbs={false} autoPlay infiniteLoop showStatus={false}>
         {urls.map((url) => (
-          <div>
+          <div key={url}>
             <img src={url} />
           </div>
         ))}
