@@ -1,0 +1,18 @@
+{
+  "en": {
+    "contactform": {
+      "fullname": "Name",
+      "email": "Email",
+      "message": "Message",
+      "submit": "Send"
+    }
+  },
+  "es": {
+    "contactform": {
+      "fullname": "Nombre",
+      "email": "Correo",
+      "message": "Mensaje",
+      "submit": "Enviar"
+    }
+  }
+}

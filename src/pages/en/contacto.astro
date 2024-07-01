@@ -4,23 +4,24 @@ import Container from '@components/container.astro';
 import Sectionhead from '@components/sectionhead.astro';
 import Layout from '@layouts/Layout.astro';
 import { Icon } from 'astro-icon/components';
+
+const locale = Astro.currentLocale;
+
+console.log(locale);
 ---
 
 <Layout title='Contact'>
   <Container>
     <Sectionhead>
-      <Fragment slot='title'>Contacto</Fragment>
-      <Fragment slot='description'
-        >Estamos encantados de poder ayudarte.</Fragment
-      >
+      <Fragment slot='title'>Contact</Fragment>
+      <Fragment slot='description'>We are here to help</Fragment>
     </Sectionhead>
 
     <div class='grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16'>
       <div>
-        <h2 class='font-medium text-2xl text-gray-800'>Contacta con nostros</h2>
+        <h2 class='font-medium text-2xl text-gray-800'>Contact with us</h2>
         <p class='text-lg leading-relaxed text-slate-500 mt-3'>
-          Si tienes alguna pregunta o necesitas ayuda, no dudes en contactar con
-          nosotros. Estamos aquí para ayudarte.
+          If you have any questions or need help, do not hesitate to contact us.
         </p>
         <div class='mt-5'>
           <div class='flex items-center mt-2 space-x-2 text-gray-600'>
@@ -38,7 +39,7 @@ import { Icon } from 'astro-icon/components';
         </div>
       </div>
       <div>
-        <ContactForm client:load />
+        <ContactForm client:load locale={locale} />
       </div>
     </div>
   </Container>

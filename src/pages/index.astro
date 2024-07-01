@@ -13,7 +13,14 @@ import Layout from '@layouts/Layout.astro';
 <Layout title=''>
   <Container>
     <Hero />
-    <Slider client:only />
+    <Slider
+      urls={[
+        '/slider/slider1.jpg',
+        '/slider/slider2.jpg',
+        '/slider/slider3.jpg',
+      ]}
+      client:only
+    />
     <Servicios />
     <Clientes />
     <Cta />
